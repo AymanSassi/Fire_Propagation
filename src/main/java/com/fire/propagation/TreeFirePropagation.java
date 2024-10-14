@@ -10,16 +10,24 @@ import java.util.Random;
 public class TreeFirePropagation {
 
 
-    private static final int HEIGHT = 5;  // Hauteur de notre grille
-    private static final int WIDTH = 5;   // Largeur de notre grille
-    private static char[][] forest = new char[HEIGHT][WIDTH];
+    private static final int HEIGHT ;  // Hauteur de notre grille
+    private static final int WIDTH ;   // Largeur de notre grille
+    private static char[][] forest ;
     private static Random random = new Random();
     private static final double PROPAGATION_PROBABILITY = 0.5;
 
     public static void main(String[] args) {
-        initializeForest();
 
-        // Début de la simulation
+        //charger la config depuis notre fich config.csv input de notre app
+        ConfigurationLoader.Config config = ConfigurationLoader.loadConfigFromCSV("config.csv");
+        HEIGHT = config.height;
+        WIDTH = config.width;
+        PROPAGATION_PROBABILITY = config.propagationProbability;
+
+// pr initialiser la foret avec les arbres qui brulent
+        initializeForest(config.initialFirePosition);
+
+        // Début de la simulation de la propagation du feu
         int step = 0;
         while (isFireBurning()) {
             propagateFire();
@@ -30,17 +38,25 @@ public class TreeFirePropagation {
     }
 
     // la forêt aura au début quelques arbres ( cases ) en feu
-    private static void initializeForest() {
-        // Exemple : Case au milieu est en feu
-        forest[2][2] = 'R';  // 'R' pour en feu
+    private static void initializeForest(List<int[]> initialFirePositions) {
+        //
+        forest = new char[HEIGHT][WIDTH];
+
+        // Exemple : Case au milieu est en feu xxxx
+        // pas besoin de mentionner car on le charge depuis notre fich config
+        //forest[2][2] = 'R';  // 'R' pour en feu
         // les autres cases seront considérés comme des arbres ('T')
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
-                if (forest[i][j] != 'R') {
-                    forest[i][j] = 'T';
+
+                    forest[i][j] = 'T';// 'T' pour arbre
                 }
             }
+
+        for (int[] pos : initialFirePositions) {
+            forest[pos[0]][pos[1]] = 'R';
         }
+
     }
 
     // Propagation du feu dans les arbres

@@ -32,17 +32,21 @@ public class ConfigurationLoader {
         try (InputStream inputStream = ConfigurationLoader.class.getClassLoader().getResourceAsStream(fileName);
              CSVReader reader = new CSVReader(new InputStreamReader(inputStream))) {
 
+            // dans mon fichier config.csv la première ligne correspond a l'têtes que je dos ignorer si on aura un erreur de parsing
+            reader.readNext();
+
+            //ici on va lire les paramètres de config
             String[] configLine = reader.readNext(); // Lire la ligne entière
-            width = Integer.parseInt(configLine[0]);
-            height = Integer.parseInt(configLine[1]);
-            probability = Double.parseDouble(configLine[2]);
+            width = Integer.parseInt(configLine[0].trim());
+            height = Integer.parseInt(configLine[1].trim());
+            probability = Double.parseDouble(configLine[2].trim());
 
             // Lire les positions des cases initialement en feu
             String[] firePositionsStr = configLine[3].split(";");
             for (String pos : firePositionsStr) {
                 String[] coords = pos.split(",");
-                int x = Integer.parseInt(coords[0]);
-                int y = Integer.parseInt(coords[1]);
+                int x = Integer.parseInt(coords[0].trim());
+                int y = Integer.parseInt(coords[1].trim());
                 firePositions.add(new int[]{x, y});
             }
 
