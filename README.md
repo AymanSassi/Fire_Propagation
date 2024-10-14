@@ -10,9 +10,6 @@ This project simulates the propagation of a fire between trees. A configuration 
     - **com.fire.propagation.model** : Contains model classes in our case  `PropagationStep`.
     - **com.fire.propagation.persistence** : Contains classes that are used for data persistence.
     - **com.fire.propagation.util** : Contains classes that may be used for generic tasks as our project evolve .
-- **src/test/java** : Contains unit tests for the project.
-    - **ForestFireSimulationTest.java** : Unit tests for the forest fire simulation logic.
-    - **SimulationStepPersistenceTest.java** : Unit tests for persistence using Hibernate.
 - **resources/config.csv** : CSV file that contains the configuration for grid size, initial burning trees, and fire propagation probability.
 
 ## How it works
@@ -26,7 +23,7 @@ This project simulates the propagation of a fire between trees. A configuration 
 ### About
 
 project available on Github :
-
+https://github.com/AymanSassi/FirePropagation/tree/master
 
 ### ToDo
 
