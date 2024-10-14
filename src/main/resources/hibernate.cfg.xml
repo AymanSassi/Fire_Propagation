@@ -1,0 +1,25 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- MySQL Database Configuration parameters-->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/forestt</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+
+
+        <!-- Enable automatic session context management for hibernate -->
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="hibernate.show_sql">true</property>
+
+        <!-- the database schema on startup will be erased et recreated  -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <mapping class="com.fire.propagation.model.PropagationStep" />
+    </session-factory>
+</hibernate-configuration>
