@@ -3,11 +3,11 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <!-- MySQL Database Configuration parameters-->
+        <!-- put your Database connection parameters here in place of xxx-->
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/forestt</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">root</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/xxx</property>
+        <property name="hibernate.connection.username">xxx</property>
+        <property name="hibernate.connection.password">xxx</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
 
 
@@ -20,6 +20,7 @@
         <!-- the database schema on startup will be erased et recreated  -->
         <property name="hibernate.hbm2ddl.auto">update</property>
 
+        <!-- you can define your classe for mapping here -->
         <mapping class="com.fire.propagation.model.PropagationStep" />
     </session-factory>
 </hibernate-configuration>
