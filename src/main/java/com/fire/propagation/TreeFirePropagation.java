@@ -24,7 +24,7 @@ public class TreeFirePropagation {
         WIDTH = config.width;
         PROPAGATION_PROBABILITY = config.propagationProbability;
 
-// pr initialiser la foret avec les arbres qui brulent
+        // pr initialiser la foret avec les arbres qui brulent
         initializeForest(config.initialFirePosition);
 
         // Début de la simulation de la propagation du feu
@@ -39,13 +39,9 @@ public class TreeFirePropagation {
 
     // la forêt aura au début quelques arbres ( cases ) en feu
     private static void initializeForest(List<int[]> initialFirePositions) {
-        //
+
         forest = new char[HEIGHT][WIDTH];
 
-        // Exemple : Case au milieu est en feu xxxx
-        // pas besoin de mentionner car on le charge depuis notre fich config
-        //forest[2][2] = 'R';  // 'R' pour en feu
-        // les autres cases seront considérés comme des arbres ('T')
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
 
